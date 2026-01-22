@@ -16,6 +16,9 @@ public class CharacterService {
 
     public CharacterEntity random() {
         List<CharacterEntity> all = repository.findAll();
+        if (all.isEmpty()) {
+            return null;
+        }
         return all.get(ThreadLocalRandom.current().nextInt(all.size()));
     }
 
